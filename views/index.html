@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Personalizado</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Feed de Posts -->
+    <div id="feed" class="row"></div>
+
+    <!-- Campo de Código -->
+    <div class="code-container">
+      <input type="text" id="codigo" placeholder="Insira o código">
+      <button onclick="validarCodigo()">Enviar</button>
+    </div>
+
+    <!-- Player de Áudio -->
+    <div id="player" style="display: none;">
+      <audio id="audio" controls>
+        <source src="" type="audio/mpeg">
+      </audio>
+      <button onclick="controlarAudio('play')">Play</button>
+      <button onclick="controlarAudio('pause')">Pause</button>
+      <button onclick="controlarAudio('reiniciar')">Reiniciar</button>
+    </div>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

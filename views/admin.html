@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Administração</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* Estilos específicos para o painel de admin */
+    .admin-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .message {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .success {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .error {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <h1>Painel de Administração</h1>
+
+    <!-- Formulário para Adicionar Posts -->
+    <form id="form-post">
+      <h2>Adicionar Post</h2>
+      <label for="tipo-post">Tipo de Post:</label>
+      <select id="tipo-post" required>
+        <option value="imagem">Imagem</option>
+        <option value="video">Vídeo</option>
+        <option value="texto">Texto</option>
+      </select>
+
+      <label for="conteudo-post">Conteúdo:</label>
+      <textarea id="conteudo-post" rows="4" required></textarea>
+
+      <button type="submit">Adicionar Post</button>
+      <div id="post-message" class="message"></div>
+    </form>
+
+    <!-- Formulário para Adicionar Áudios -->
+    <form id="form-audio">
+      <h2>Adicionar Áudio</h2>
+      <label for="codigo-audio">Código:</label>
+      <input type="text" id="codigo-audio" required>
+
+      <label for="caminho-audio">Caminho do Áudio:</label>
+      <input type="text" id="caminho-audio" required>
+
+      <button type="submit">Adicionar Áudio</button>
+      <div id="audio-message" class="message"></div>
+    </form>
+  </div>
+
+  <script>
+    // Função para adicionar um post
+    document.getElementById('form-post').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const tipo = document.getElementById('tipo-post').value;
+      const conteudo = document.getElementById('conteudo-post').value;
+
+      try {
+        const response = await fetch('/api/posts', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ tipo, conteudo }),
+        });
+
+        if (response.ok) {
+          document.getElementById('post-message').textContent = 'Post adicionado com sucesso!';
+          document.getElementById('post-message').className = 'message success';
+        } else {
+          throw new Error('Erro ao adicionar post');
+        }
+      } catch (error) {
+        document.getElementById('post-message').textContent = 'Erro ao adicionar post.';
+        document.getElementById('post-message').className = 'message error';
+        console.error(error);
+      }
+    });
+
+    // Função para adicionar um áudio
+    document.getElementById('form-audio').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const codigo = document.getElementById('codigo-audio').value;
+      const caminho = document.getElementById('caminho-audio').value;
+
+      try {
+        const response = await fetch('/api/audios', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ codigo, caminho }),
+        });
+
+        if (response.ok) {
+          document.getElementById('audio-message').textContent = 'Áudio adicionado com sucesso!';
+          document.getElementById('audio-message').className = 'message success';
+        } else {
+          throw new Error('Erro ao adicionar áudio');
+        }
+      } catch (error) {
+        document.getElementById('audio-message').textContent = 'Erro ao adicionar áudio.';
+        document.getElementById('audio-message').className = 'message error';
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
