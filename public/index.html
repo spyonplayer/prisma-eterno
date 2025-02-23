@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prisma Eterno</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Mensagem de boas-vindas -->
+    <div id="welcomeMessage">
+      <h1>Bem-vindo ao Prisma</h1>
+      <p>Escute o que os fragmentos tem a dizer.</p>
+    </div>
+
+    <!-- Aba de Posts -->
+    <div class="posts-section">
+      <h2>Posts</h2>
+      <div id="posts">
+        <!-- Posts serão adicionados aqui dinamicamente -->
+      </div>
+    </div>
+
+    <!-- Aba de Código e Áudio -->
+    <div class="code-section">
+      <h2>Chave de memoria</h2>
+      <input type="text" id="codeInput" placeholder="Digite o chave aqui">
+      <button onclick="checkCode()">Executar</button>
+      <div id="audioPlayer" class="hidden">
+        <audio id="audio" controls>
+          <source src="" type="audio/mpeg">
+          Seu navegador não suporta o elemento de áudio.
+        </audio>
+        <button onclick="playAudio()">Play</button>
+        <button onclick="pauseAudio()">Pause</button>
+        <button onclick="restartAudio()">Reiniciar</button>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+      </div>
+    </div>
+
+    <!-- Botão de login no canto da tela -->
+    <button id="moderatorLoginButton" class="login-button">Moderador</button>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal hidden">
+      <div class="modal-content">
+        <span id="closeModalButton" class="close-button">&times;</span>
+        <h2>Login do Moderador</h2>
+        <input type="password" id="moderatorPassword" placeholder="Digite a senha">
+        <button onclick="loginModerator()">Entrar</button>
+        <span id="loginError" class="error-message hidden">Senha incorreta!</span>
+      </div>
+    </div>
+
+    <!-- Interface de gerenciamento de áudios (visível apenas para moderadores) -->
+    <div id="audioManagement" class="hidden">
+      <h2>Gerenciar Áudios</h2>
+      <div id="audioList">
+        <!-- Lista de áudios será preenchida aqui -->
+      </div>
+      <button onclick="addAudio()">Adicionar Áudio</button>
+    </div>
+
+    <!-- Interface de adicionar posts (visível apenas para moderadores) -->
+    <div id="addPostSection" class="hidden">
+      <h2>Adicionar Post</h2>
+      <select id="postType">
+        <option value="text">Texto</option>
+        <option value="image">Imagem</option>
+        <option value="video">Vídeo</option>
+      </select>
+      <input type="text" id="postContent" placeholder="Digite o conteúdo, URL da imagem ou link do vídeo">
+      <button onclick="addPost()">Adicionar Post</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

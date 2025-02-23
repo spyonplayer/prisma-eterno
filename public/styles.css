@@ -1,0 +1,313 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo do corpo com imagem de fundo e overlay */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-image: url('fundo.jpg'); /* Substitua pelo caminho da sua imagem */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Caso a imagem não carregue, temos um fallback: */
+    background-color: #615f5f;
+    color: #212529;
+    line-height: 1.6;
+}
+
+/* Overlay escuro para melhorar a legibilidade */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+/* Container principal unificado */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+/* Mensagem de boas-vindas */
+#welcomeMessage {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#welcomeMessage h1 {
+    font-size: 2.5rem;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+#welcomeMessage p {
+    font-size: 1.2rem;
+    color: #acbdcc;
+}
+
+/* Aba de Posts */
+.posts-section {
+    background-color: #161616d8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.posts-section h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post {
+    background-color: #161616d8;
+    border: 1px solid #161616d8;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post img,
+.post video,
+.post iframe {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.post p {
+    font-size: 1rem;
+    color: #acbdcc;
+}
+
+/* Aba de Código e Áudio */
+.code-section {
+    background-color: #161616d8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.code-section h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#codeInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #161616d8;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: rgb(97, 95, 95);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#audioPlayer {
+    margin-top: 20px;
+}
+
+audio {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+/* Botão de login no canto da tela */
+.login-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #161616d8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Modal de Login */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+}
+
+.modal-content {
+    background-color: #161616d8;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-content h2 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #161616d8;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #161616d8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #218838;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #acbdcc;
+}
+
+.close-button:hover {
+    color: #212529;
+}
+
+.error-message {
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Interface de gerenciamento de áudios */
+#audioManagement {
+    background-color: #161616d8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+#audioManagement h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#audioList {
+    margin-bottom: 20px;
+}
+
+#audioList div {
+    margin-bottom: 10px;
+}
+
+/* Interface de adicionar posts */
+#addPostSection {
+    background-color: #161616d8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+#addPostSection h2 {
+    font-size: 2rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+#addPostSection select,
+#addPostSection input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #161616d8;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+#addPostSection button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #161616d8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#addPostSection button:hover {
+    background-color: #218838;
+}
