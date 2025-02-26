@@ -5,7 +5,7 @@ let sharedData = {
     posts: JSON.parse(localStorage.getItem("posts")) || [
         { type: "text", content: "Este é um post de texto." },
         { type: "image", content: "imagem1.jpg" },
-        { type: "video", content: "video1.mp4" }
+        { type: "video", content: "mortelin.mp4" }
     ],
     audioMap: JSON.parse(localStorage.getItem("audioMap")) || {
         "teste": "teste.mp3",
