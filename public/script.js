@@ -8,7 +8,7 @@ let sharedData = {
         { type: "video", content: "video1.mp4" }
     ],
     audioMap: JSON.parse(localStorage.getItem("audioMap")) || {
-        "CODE123": "audio1.mp3",
+        "teste": "teste.mp3",
         "CODE456": "audio2.mp3"
     }
 };
